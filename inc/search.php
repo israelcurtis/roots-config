@@ -4,7 +4,7 @@
 /************************/
 // INCLUDE ADDITIONAL SEARCH HITS IF A POST HAS TAGS THAT MATCH THE SEARCH TERM
 // https://wordpress.stackexchange.com/questions/2623/include-custom-taxonomy-term-in-search
-function atom_search_where($where){
+function roots_search_where($where){
 	if (is_admin()) return $where;
 	global $wpdb, $wp_query;
 	if (is_search()) {
@@ -21,7 +21,7 @@ function atom_search_where($where){
   return $where;
 }
 
-function atom_search_join($join){
+function roots_search_join($join){
 	if (is_admin()) return $join;
 	global $wpdb;
 	if (is_search())
@@ -29,7 +29,7 @@ function atom_search_join($join){
 	return $join;
 }
 
-function atom_search_groupby($groupby){
+function roots_search_groupby($groupby){
 	if (is_admin()) return $groupby;
 	global $wpdb;
 
@@ -44,8 +44,8 @@ function atom_search_groupby($groupby){
 	return $groupby.", ".$groupby_id;
 }
 
-add_filter('posts_where','atom_search_where');
-add_filter('posts_join', 'atom_search_join');
-add_filter('posts_groupby', 'atom_search_groupby');
+add_filter('posts_where','roots_search_where');
+add_filter('posts_join', 'roots_search_join');
+add_filter('posts_groupby', 'roots_search_groupby');
 /************************/
 ?>
